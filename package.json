@@ -1,0 +1,40 @@
+{
+  "name": "d3-force-labels",
+  "version": "0.7.1",
+  "description": "Generates an automatic and dynamic positioning for labels, using the d3 force layout",
+  "keywords": [
+    "d3",
+    "d3-module",
+    "forceSimulation",
+    "labels"
+  ],
+  "author": {
+    "name": "Tyler Rick",
+    "url": "https://github.com/TylerRick"
+  },
+  "license": "BSD-3-Clause",
+  "main": "build/d3-force-labels.js",
+  "module": "index",
+  "jsnext:main": "index",
+  "homepage": "https://github.com/TylerRick/d3-force-labels",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TylerRick/d3-force-labels.git"
+  },
+  "scripts": {
+    "pretest": "rm -rf build && mkdir build && rollup --banner \"$(preamble)\" -g d3-force:d3 -f umd -n d3 -o build/d3-force-labels.js -- index.js",
+    "test": "tape 'test/**/*-test.js' && eslint index.js src",
+    "prepublish": "npm run test && uglifyjs -b beautify=false,preamble=\"'$(preamble)'\" build/d3-force-labels.js -c -m -o build/d3-force-labels.min.js",
+    "postpublish": "git push && git push --tags && zip -j build/d3-force-labels.zip -- Readme.md build/d3-force-labels.js build/d3-force-labels.min.js"
+  },
+  "dependencies": {
+    "d3-force": "1"
+  },
+  "devDependencies": {
+    "eslint": "4",
+    "package-preamble": "0.1.0",
+    "rollup": "0.43",
+    "tape": "4",
+    "uglify-js": "3"
+  }
+}
