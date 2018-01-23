@@ -15,6 +15,8 @@
 
         d.anchorPos.x = x
         d.anchorPos.y = y
+        d.anchorPos.fx = x
+        d.anchorPos.fy = y
 
         // If a label position does not exist, set it to be the anchor position
         if (d.labelPos.x == null) {
@@ -33,8 +35,8 @@
         if (d && d.__data__) {
           var data = d.__data__
 
-          if (!d.labelPos)  d.labelPos =  {fixed: false}
-          if (!d.anchorPos) d.anchorPos = {fixed: true}
+          if (!d.labelPos)  d.labelPos =  {}
+          if (!d.anchorPos) d.anchorPos = {}
 
           // Place position objects in __data__ to make them available through
           // d.labelPos/d.anchorPos for different elements
